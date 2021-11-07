@@ -1,8 +1,7 @@
 package PlayersAndMonsters03;
 
 public class BladeKnight extends DarkKnight{
-
-    public BladeKnight(String userName, int level) {
-        super(userName, level);
+    public BladeKnight(String username, int level) {
+        super(username, level);
     }
 }

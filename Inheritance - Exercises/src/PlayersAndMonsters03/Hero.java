@@ -1,16 +1,16 @@
 package PlayersAndMonsters03;
 
 public class Hero {
-    private String userName;
+    private String username;
     private int level;
 
-    public Hero(String userName, int level) {
-        this.userName = userName;
+    public Hero(String username, int level) {
+        this.username = username;
         this.level = level;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
     public int getLevel() {
@@ -21,7 +21,7 @@ public class Hero {
     public String toString() {
         return String.format("Type: %s Username: %s Level: %s",
                 this.getClass().getName(),
-                this.getUserName(),
+                this.getUsername(),
                 this.getLevel());
     }
 }

@@ -1,7 +1,7 @@
 package PlayersAndMonsters03;
 
 public class Elf extends Hero{
-    public Elf(String userName, int level) {
-        super(userName, level);
+    public Elf(String username, int level) {
+        super(username, level);
     }
 }
