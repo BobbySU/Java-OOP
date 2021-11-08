@@ -1,6 +1,6 @@
 package Animals06;
 
-public class Kitten extends Cat{
+public class Kitten extends Cat {
     private static final String GENDER = "Female";
 
     public Kitten(String name, int age) {
@@ -8,7 +8,7 @@ public class Kitten extends Cat{
     }
 
     @Override
-    public String produceSound(){
+    public String produceSound() {
         return "Meow";
     }
 }

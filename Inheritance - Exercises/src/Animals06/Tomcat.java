@@ -1,6 +1,6 @@
 package Animals06;
 
-public class Tomcat extends Cat{
+public class Tomcat extends Cat {
     private static final String GENDER = "Male";
 
     public Tomcat(String name, int age) {
@@ -8,7 +8,7 @@ public class Tomcat extends Cat{
     }
 
     @Override
-    public String produceSound(){
+    public String produceSound() {
         return "MEOW";
     }
 }
