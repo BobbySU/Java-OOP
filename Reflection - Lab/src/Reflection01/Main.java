@@ -6,14 +6,14 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
+
         Class<Reflection> clazz = Reflection.class;
 
         System.out.println("class " + clazz.getSimpleName());
-        System.out.println("class java.lang." + clazz.getSuperclass().getSimpleName());
+        System.out.println(clazz.getSuperclass());
         try {
             Arrays.stream(clazz.getInterfaces())
-                    .map(Class::getSimpleName)
-                    .forEach(e -> System.out.println("interface java.io." + e));
+                    .forEach(System.out::println);
             Constructor<Reflection> declaredConstructor = clazz.getDeclaredConstructor();
             Reflection reflection = declaredConstructor.newInstance();
             System.out.println(reflection);
