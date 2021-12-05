@@ -32,52 +32,52 @@ public class DatabaseTest {
     }
 
     @Test(expected = OperationNotSupportedException.class)
-    public void initializeInvalidDataBaseMorePersonOfTheLimit() throws OperationNotSupportedException {
+    public void testInitializeInvalidDataBaseMorePersonOfTheLimit() throws OperationNotSupportedException {
         this.database = new Database(INVALID_PERSON_ARRAY);
     }
 
     @Test(expected = OperationNotSupportedException.class)
-    public void initializeInvalidDataBaseLessPersonOfTheLimit() throws OperationNotSupportedException {
+    public void testInitializeInvalidDataBaseLessPersonOfTheLimit() throws OperationNotSupportedException {
         this.database = new Database(INVALID_PERSON_ARRAY_ZERO_PERSON);
     }
 
     @Test
-    public void addPersonToDataBase() throws OperationNotSupportedException {
+    public void testAddPersonToDataBase() throws OperationNotSupportedException {
         this.database.add(this.person);
         Assert.assertEquals(NOT_ADDED_OBJECT, NEEDED_ARRAY_LENGTH, this.database.getElements().length);
     }
 
     @Test(expected = OperationNotSupportedException.class)
-    public void addNullValue() throws OperationNotSupportedException {
+    public void testAddNullValue() throws OperationNotSupportedException {
         this.database.add(null);
     }
 
     @Test
-    public void findPersonByUsername() throws OperationNotSupportedException {
+    public void testFindPersonByUsername() throws OperationNotSupportedException {
         this.database.add(this.person);
         Person p = this.database.findByUsername(PERSON_NAME);
         Assert.assertEquals(NOT_EQUALS_OBJECTS, this.person, p);
     }
 
     @Test(expected = OperationNotSupportedException.class)
-    public void findPersonByNameInvalidNullValue() throws OperationNotSupportedException {
+    public void testFindPersonByNameInvalidNullValue() throws OperationNotSupportedException {
         this.database.findByUsername(null);
     }
 
     @Test(expected = OperationNotSupportedException.class)
-    public void findNonExistentPersonName() throws OperationNotSupportedException {
+    public void testFindNonExistentPersonName() throws OperationNotSupportedException {
         this.database.findByUsername("Test");
     }
 
     @Test(expected = OperationNotSupportedException.class)
-    public void findMoreOnePersonWithGivenNameInvalidOperation() throws OperationNotSupportedException {
+    public void testFindMoreOnePersonWithGivenNameInvalidOperation() throws OperationNotSupportedException {
         this.database.add(this.person);
         this.database.add(this.person);
         this.database.findByUsername(PERSON_NAME);
     }
 
     @Test(expected = OperationNotSupportedException.class)
-    public void removeMoreObjectsThanThereAre() throws OperationNotSupportedException {
+    public void testRemoveMoreObjectsThanThereAre() throws OperationNotSupportedException {
         this.database.remove();
         this.database.remove();
         this.database.remove();
@@ -85,31 +85,31 @@ public class DatabaseTest {
     }
 
     @Test
-    public void removeObject() throws OperationNotSupportedException {
+    public void testRemoveObject() throws OperationNotSupportedException {
         this.database.remove();
         Assert.assertEquals(NO_REMOVED_OBJECTS,1,this.database.getElements().length);
     }
     @Test
-    public void removesAvailableObjects() throws OperationNotSupportedException {
+    public void testRemovesAvailableObjects() throws OperationNotSupportedException {
         this.database.remove();
         this.database.remove();
         Assert.assertEquals(NO_REMOVED_OBJECTS,0,this.database.getElements().length);
     }
 
     @Test
-    public void findPersonById() throws OperationNotSupportedException {
+    public void testFindPersonById() throws OperationNotSupportedException {
         this.database.add(this.person);
         Person p = this.database.findById(79);
         Assert.assertEquals(NOT_EQUALS_OBJECTS,this.person,p);
     }
 
     @Test(expected = OperationNotSupportedException.class)
-    public void tryFindNonExistentObject() throws OperationNotSupportedException {
+    public void testTryFindNonExistentObject() throws OperationNotSupportedException {
         this.database.findById(99);
     }
 
     @Test(expected = OperationNotSupportedException.class)
-    public void findMoreOnePersonWithGivenIdInvalidOperation() throws OperationNotSupportedException {
+    public void testFindMoreOnePersonWithGivenIdInvalidOperation() throws OperationNotSupportedException {
         this.database.add(new Person(69,"Test"));
         this.database.findById(69);
     }
