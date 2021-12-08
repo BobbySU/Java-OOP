@@ -3,22 +3,50 @@ package restaurant.repositories;
 import restaurant.entities.drinks.interfaces.Beverages;
 import restaurant.repositories.interfaces.BeverageRepository;
 
-import java.util.Collection;
+import java.util.*;
 
 public class BeverageRepositoryImpl implements BeverageRepository<Beverages> {
+    private List<Beverages> beverages;
+
+    public BeverageRepositoryImpl() {
+        this.beverages = new ArrayList<>();
+    }
 
     @Override
     public Beverages beverageByName(String drinkName, String drinkBrand) {
-        return null;
+        return beverages.stream()
+                .filter(b -> b.getName().equals(drinkName) && b.getBrand().equals(drinkBrand))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public Collection<Beverages> getAllEntities() {
-        return null;
+        return beverages;
     }
 
     @Override
     public void add(Beverages entity) {
-
+        beverages.add(entity);
     }
+//    private Map<String, Beverages> beveragesMap;
+
+//    public BeverageRepositoryImpl() {
+//        this.beveragesMap = new LinkedHashMap<>();
+//    }
+
+//    @Override
+//    public Beverages beverageByName(String drinkName, String drinkBrand) {
+//        return beveragesMap.get(drinkName);
+//    }
+//
+//    @Override
+//    public Collection<Beverages> getAllEntities() {
+//        return beveragesMap.values();
+//    }
+//
+//    @Override
+//    public void add(Beverages entity) {
+//        beveragesMap.put(entity.getName(), entity);
+//    }
 }
