@@ -28,7 +28,7 @@ public class Shop {
         return Collections.unmodifiableMap(this.shelves);
     }
 
-    public String addGoods(String shelf, Goods goods) throws OperationNotSupportedException, IllegalArgumentException{
+    public String addGoods(String shelf, Goods goods) throws OperationNotSupportedException, IllegalArgumentException {
         if (!this.shelves.containsKey(shelf)) {
             throw new IllegalArgumentException("The shelf doesn't exist!");
         }
@@ -36,6 +36,7 @@ public class Shop {
         if (this.shelves.get(shelf) != null) {
             throw new IllegalArgumentException("The shelf is already taken!");
         }
+
         boolean itemExist = getShelves().containsValue(goods);
 
         if (itemExist) {
@@ -46,7 +47,7 @@ public class Shop {
         return String.format("Goods: %s is placed successfully!", goods.getGoodsCode());
     }
 
-    public String removeGoods (String shelf, Goods goods) {
+    public String removeGoods(String shelf, Goods goods) {
         if (!this.shelves.containsKey(shelf)) {
             throw new IllegalArgumentException("The shelf doesn't exist!");
         }
