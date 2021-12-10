@@ -2,7 +2,6 @@ package glacialExpedition.models.suitcases;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 public class Carton implements Suitcase {
     private Collection<String> exhibits;

@@ -1,7 +1,9 @@
 package glacialExpedition.models.explorers;
 
-public class GlacierExplorer extends BaseExplorer{
+public class GlacierExplorer extends BaseExplorer {
+    private static final double GLACIER_EXPLORER_ENERGY = 40;
+
     public GlacierExplorer(String name) {
-        super(name, 40);
+        super(name, GLACIER_EXPLORER_ENERGY);
     }
 }

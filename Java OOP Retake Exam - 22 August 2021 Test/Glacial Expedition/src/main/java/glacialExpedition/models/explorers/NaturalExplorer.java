@@ -1,16 +1,18 @@
 package glacialExpedition.models.explorers;
 
-public class NaturalExplorer extends BaseExplorer{
+public class NaturalExplorer extends BaseExplorer {
+    private static final double NATURAL_EXPLORER_ENERGY = 60;
+
     public NaturalExplorer(String name) {
-        super(name, 60);
+        super(name, NATURAL_EXPLORER_ENERGY);
     }
 
     @Override
-    public void search(){
+    public void search() {
         if (getEnergy() <= 7) {
-            this.setEnergy(0);
+            super.setEnergy(0);
         } else {
-            this.setEnergy(this.getEnergy()-7);
+            super.setEnergy(this.getEnergy() - 7);
         }
     }
 }

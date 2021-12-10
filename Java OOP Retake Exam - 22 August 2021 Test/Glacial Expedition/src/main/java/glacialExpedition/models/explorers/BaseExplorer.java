@@ -1,10 +1,8 @@
 package glacialExpedition.models.explorers;
 
+import glacialExpedition.common.ExceptionMessages;
 import glacialExpedition.models.suitcases.Carton;
 import glacialExpedition.models.suitcases.Suitcase;
-
-import static glacialExpedition.common.ExceptionMessages.EXPLORER_ENERGY_LESS_THAN_ZERO;
-import static glacialExpedition.common.ExceptionMessages.EXPLORER_NAME_NULL_OR_EMPTY;
 
 public abstract class BaseExplorer implements Explorer {
     private String name;
@@ -17,18 +15,14 @@ public abstract class BaseExplorer implements Explorer {
         this.suitcase = new Carton();
     }
 
-    public void setName(String name) {
-        if (name == null || name.trim().isEmpty()) {
-            throw new NullPointerException(EXPLORER_NAME_NULL_OR_EMPTY);
-        }
-        this.name = name;
+    @Override
+    public void search() {
+        this.energy = Math.max(0, this.energy - 15);
     }
 
-    public void setEnergy(double energy) {
-        if (energy <= 0) {
-            throw new IllegalArgumentException(EXPLORER_ENERGY_LESS_THAN_ZERO);
-        }
-        this.energy = energy;
+    @Override
+    public boolean canSearch(){
+        return energy > 0;
     }
 
     @Override
@@ -36,14 +30,23 @@ public abstract class BaseExplorer implements Explorer {
         return name;
     }
 
+    public void setName(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new NullPointerException(ExceptionMessages.EXPLORER_NAME_NULL_OR_EMPTY);
+        }
+        this.name = name;
+    }
+
     @Override
     public double getEnergy() {
         return energy;
     }
 
-    @Override
-    public boolean canSearch() {
-        return (energy > 0);
+    public void setEnergy(double energy) {
+        if (energy < 0) {
+            throw new IllegalArgumentException(ExceptionMessages.EXPLORER_ENERGY_LESS_THAN_ZERO);
+        }
+        this.energy = energy;
     }
 
     @Override
@@ -51,12 +54,7 @@ public abstract class BaseExplorer implements Explorer {
         return suitcase;
     }
 
-    @Override
-    public void search() {
-        if (energy <= 15) {
-            this.energy = 0;
-        } else {
-            this.energy -= 15;
-        }
+    public void setSuitcase(Suitcase suitcase) {
+        this.suitcase = suitcase;
     }
 }
