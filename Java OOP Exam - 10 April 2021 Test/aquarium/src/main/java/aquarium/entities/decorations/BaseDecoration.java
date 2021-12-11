@@ -1,5 +1,7 @@
 package aquarium.entities.decorations;
 
+import java.util.Objects;
+
 public abstract class BaseDecoration implements Decoration{
     private int comfort;
     private double price;
@@ -11,11 +13,25 @@ public abstract class BaseDecoration implements Decoration{
 
     @Override
     public int getComfort() {
-        return 0;
+        return this.comfort;
     }
 
     @Override
     public double getPrice() {
-        return 0;
+        return this.price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BaseDecoration that = (BaseDecoration) o;
+        return comfort == that.comfort &&
+                Double.compare(that.price, price) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(comfort, price);
     }
 }
