@@ -111,10 +111,10 @@ public class ControllerImpl implements Controller {
 
     @Override
     public String sumOfAll(String houseName) {
-        double catPrice = houses.values().stream()
+        double catPrice = houses.values().stream().filter(e->e.getName().equals(houseName))
                 .mapToDouble(e -> e.getCats().stream().mapToDouble(Cat::getPrice).sum())
                 .sum();
-        double toyPrice = houses.values().stream()
+        double toyPrice = houses.values().stream().filter(e->e.getName().equals(houseName))
                 .mapToDouble(e -> e.getToys().stream().mapToDouble(Toy::getPrice).sum())
                 .sum();
         double sum = catPrice + toyPrice;
